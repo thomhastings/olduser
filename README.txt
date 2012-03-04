@@ -3,7 +3,7 @@ I wrote this script in Python 2.4, tested on Rocks 5.4.3 and 5.2.
 
 I have been given permission to release this script under a BSD license.
 Grab it here: https://github.com/thomhastings/olduser/blob/master/olduser.py
-Or here: http://pastebin.com/hJCDvXjh
+Or here: http://pastebin.com/PYw51gMS
 
 Example usage:
 
