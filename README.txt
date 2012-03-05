@@ -7,15 +7,15 @@ Or here: http://pastebin.com/PYw51gMS
 
 Example usage:
 
-[hastint@rocks64 ~]$ python olduser.py -?
+[hastint@rocks64 ~]$ python olduser.py -h
 Old User Program v1.0
-(c) Thom Hastings 2012
-BSD License
-designed for Rocks 5.2
+(c) Thom Hastings 2012 BSD License
+designed for Rocks 5.4.3 - 5.2
 
-usage: olduser.py [#ofDaysAgo]		displays users who haven't
+usage: olduser.py [#ofDaysAgo]		displays users who haveni't
 					logged in in X days and asks
 					if you want to disable them
+       olduser.py [-? -h --help]   displays this help message
 
 The script disables users via usermod, simply changing their login shell to /bin/nologin, so they can easily be re-enabled.
 

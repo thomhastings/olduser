@@ -5,9 +5,8 @@ import time
 import datetime
 
 print "Old User Program v1.0"
-print "(c) Thom Hastings 2012"
-print "BSD License"
-print "designed for Rocks 5.2"
+print "(c) Thom Hastings 2012 BSD License"
+print "designed for Rocks 5.4.3 - 5.2"
 
 # Print usage if system argument is --help or -h or -?
 try:
