@@ -11,7 +11,8 @@ print "designed for Rocks 5.4.3 - 5.2"
 # Print usage if system argument is --help or -h or -?
 try:
     if str(sys.argv[1]) == '--help' or str(sys.argv[1]) == '-h' or str(sys.argv[1]) == '-?':
-        print "\nusage: " + str(sys.argv[0]) + " [#ofDaysAgo]\t\tdisplays users who haven't\n\t\t\t\t\tlogged in in X days and asks\n\t\t\t\t\tif you want to disable them"
+        print "\nusage:\t" + str(sys.argv[0]) + " [#ofDaysAgo]\t\tdisplays users who haven't\n\t\t\t\t\tlogged in in X days and asks\n\t\t\t\t\tif you want to disable them"
+        print "\t" + str(sys.argv[0]) + " [-? -h --help]\tdisplays this help message"
         sys.exit()
 except IndexError:
     pass
