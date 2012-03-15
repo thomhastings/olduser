@@ -12,7 +12,7 @@ Old User Program v1.0
 (c) Thom Hastings 2012 BSD License
 designed for Rocks 5.4.3 - 5.2
 
-usage:  olduser.py [#ofDaysAgo]		displays users who haveni't
+usage:  olduser.py [#ofDaysAgo]		displays users who haven't
 					logged in in X days and asks
 					if you want to disable them
         olduser.py [-? -h --help]       displays this help message
