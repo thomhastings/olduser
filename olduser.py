@@ -242,16 +242,27 @@ while True:
             pass
             break
         elif ask == 'y' or ask == "Y" or ask == "yes":
-            for olduser in oldusers:
-                ask = raw_input("Disable account \'" + olduser + "\'? [y/n]: ")
-                if ask == 'y' or ask == "Y" or ask == "yes":
-                    print "Disabling account (" + olduser + ")..."
-                    os.system("su -c '/usr/sbin/usermod -s /sbin/nologin " + olduser + "'")
-                elif ask == 'n' or ask == "N" or ask == "no":
-                    pass
-                    break
+            try:
+                disable_all = raw_input("Disable all old users? (if 'No', you will be prompted individually) [y/n]: ")
+                if disable_all == "y" or disable_all == "Y" or disable_all == "yes":
+                    for user in oldusers:
+                        print "Disabling account (" + olduser + ")..."
+                        os.system("su -c '/usr/sbin/usermod -s /sbin/nologin " + olduser + "'")
+                elif disable_all == "n" or disable_all == "N" or disable_all == "No":
+                    for olduser in oldusers:
+                        ask = raw_input("Disable account \'" + olduser + "\'? [y/n]: ")
+                        if ask == 'y' or ask == "Y" or ask == "yes":
+                            print "Disabling account (" + olduser + ")..."
+                            os.system("su -c '/usr/sbin/usermod -s /sbin/nologin " + olduser + "'")
+                        elif ask == 'n' or ask == "N" or ask == "no":
+                            pass
+                            break
+                        else:
+                            raise TypeError("Must enter (y/n)")
                 else:
                     raise TypeError("Must enter (y/n)")
+            except TypeError:
+                print "Must enter (y/n)"
             print "To re-enable a user, use \"su -c '/usr/sbin/usermod -s /bin/bash USERNAME'\"."
             break
         else:
