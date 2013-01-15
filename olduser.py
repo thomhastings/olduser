@@ -2,10 +2,11 @@
 import os
 import sys
 import time
+import math
 import datetime
 
-print "Old User Program v1.0"
-print "(c) Thom Hastings 2012 BSD License"
+print "Old User Program v1.1"
+print "(c) Thom Hastings 2012 New BSD License"
 print "designed for Rocks 5.4.3 - 5.2"
 
 # Print usage if system argument is --help or -h or -?
@@ -184,7 +185,7 @@ print
 #try:
 while True:
     try:
-        ask = raw_input("Show disabled users? [y/n]: ")
+        ask = raw_input("Show currently disabled users? [y/n]: ")
         if ask == 'n' or ask == "N" or ask == "no":
             showdisabled = False
             break
@@ -216,22 +217,36 @@ else:
     while i < len(users):
         try:
             if int(uids[i]) >= 500 and int(uids[i]) <= 65535 and users[i] != 'nobody' and disabled[i] == False:
-                print users[i].ljust(12) + "\t" + uids[i] + "\t" + str(usertimes[i]) + "\t" + times[i] + " " + str(usertimes[i].year)
+                newTimes = times[i]
+                j = 0
+                while j<len(newTimes):
+                    if newTimes[j]=='(':
+                        newTimes = newTimes[0:j]
+                    j = j + 1
+                print users[i].ljust(12) + "\t" + uids[i] + "\t" + str(usertimes[i]) + "\t" + newTimes
         except IndexError:
             pass
         i = i+1
 
+def columnize(users):
+    if len(users)!=0:
+        max_length = 0
+        usert = ()
+        for user in users:
+            max_length = max(max_length, len(user)+2) # padding
+            usert = usert + (user,)
+        numColumns = int(math.ceil(80 / max_length))  # assumes width of 80 characters
+        numRows = int(math.ceil(len(users) / numColumns)+1)
+        format = ((("%-" + str(max_length) + "s ") * numColumns) + "\n") * numRows
+        while len(usert)<numRows*numColumns:          # ensure enough entries for string formatting
+            usert = usert + (" ",)
+        print format % usert
+
 print "\nCurrent Users:"
-i = 0
-while i < len(currentusers):
-    print currentusers[i]
-    i = i+1
+columnize(currentusers)
 
 print "\nOld Users:"
-i = 0
-while i < len(oldusers):
-    print oldusers[i]
-    i = i+1
+columnize(oldusers)
 
 print
 #try:
