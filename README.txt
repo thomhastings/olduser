@@ -1,6 +1,8 @@
 As an admin for a Rocks cluster I wrote a script to help clean out old users.
 I wrote this script in Python 2.4, tested on Rocks 5.4.3 and 5.2.
 
+depends: finger
+
 I have been given permission to release this script under a BSD license.
 Grab it here: https://github.com/thomhastings/olduser/blob/master/olduser.py
 
